@@ -29,4 +29,3 @@ struct Demo_Previews: PreviewProvider {
     }
   }
 }
-

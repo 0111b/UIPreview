@@ -1,20 +1,6 @@
 import SwiftUI
 import UIKit
 
-
-public final class ViewCoordinator<ContentView: UIView> {
-  typealias Builder = () -> ContentView
-  typealias Updater = (ContentView) -> Void
-
-  init(build: @escaping Builder, update: @escaping Updater) {
-    builder = build
-    updater = update
-  }
-
-  let builder: Builder
-  let updater: Updater
-}
-
 public struct UIViewPreview<ContentView: UIView>: UIViewRepresentable {
   let contextBuilder: () -> ViewCoordinator<ContentView>
 
