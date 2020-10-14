@@ -1,5 +1,6 @@
 import SwiftUI
 
+//xcrun simctl list devicetypes
 public let defaultDeviceNames: [String] =
   [
     "iPhone 8",
