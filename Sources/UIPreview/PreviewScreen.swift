@@ -35,5 +35,4 @@ struct ScreenPreview<Screen: View>: View {
     }
   }
 
-
 }
