@@ -10,12 +10,14 @@ public let defaultDeviceNames: [String] =
     "iPad Pro (12.9-inch) (4th generation)"
   ]
 
+@available(iOS 13, *)
 extension View {
   public func previewAsScreen(deviceNames: [String] = defaultDeviceNames) -> some View {
     ScreenPreview(screen: self, deviceNames: deviceNames)
   }
 }
 
+@available(iOS 13, *)
 struct ScreenPreview<Screen: View>: View {
   var screen: Screen
   var deviceNames: [String]

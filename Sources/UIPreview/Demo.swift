@@ -1,5 +1,6 @@
 import SwiftUI
 
+@available(iOS 13, *)
 struct ContentView: View {
   var body: some View {
     Text("Hello, world!")
@@ -7,6 +8,7 @@ struct ContentView: View {
   }
 }
 
+@available(iOS 13, *)
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
     ContentView()
@@ -14,6 +16,7 @@ struct ContentView_Previews: PreviewProvider {
   }
 }
 
+@available(iOS 13, *)
 struct Demo_Previews: PreviewProvider {
   static var previews: some View {
     Group {

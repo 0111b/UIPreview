@@ -1,12 +1,13 @@
 import SwiftUI
 
+@available(iOS 13, *)
 extension View {
   public func previewAsComponent() -> some View {
     ComponentPreview(component: self)
   }
 }
 
-
+@available(iOS 13, *)
 extension ContentSizeCategory {
   static let smallestAndLargest = [allCases.first!, allCases.last!]
 
@@ -15,6 +16,7 @@ extension ContentSizeCategory {
   }
 }
 
+@available(iOS 13, *)
 struct ComponentPreview<Component: View>: View {
   var component: Component
 

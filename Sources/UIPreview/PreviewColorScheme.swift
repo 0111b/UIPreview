@@ -1,5 +1,6 @@
 import SwiftUI
 
+@available(iOS 13, *)
 extension View {
   public func previewLightTheme() -> some View {
     ColorSchemePreview(scheme: .light) { self }
@@ -10,12 +11,14 @@ extension View {
   }
 }
 
+@available(iOS 13, *)
 extension ColorScheme {
   var previewName: String {
     String(describing: self).capitalized
   }
 }
 
+@available(iOS 13, *)
 struct ColorSchemePreview<Preview: View>: View {
   private let preview: Preview
   private let scheme: ColorScheme
