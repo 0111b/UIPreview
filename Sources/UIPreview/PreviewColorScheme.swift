@@ -1,11 +1,11 @@
 import SwiftUI
 
 extension View {
-  func previewLightTheme() -> some View {
+  public func previewLightTheme() -> some View {
     ColorSchemePreview(scheme: .light) { self }
   }
 
-  func previewDarkTheme() -> some View {
+  public func previewDarkTheme() -> some View {
     ColorSchemePreview(scheme: .dark) { self }
   }
 }
