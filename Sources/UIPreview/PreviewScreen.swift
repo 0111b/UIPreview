@@ -1,4 +1,6 @@
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 
 //xcrun simctl list devicetypes
 public let defaultDeviceNames: [String] =

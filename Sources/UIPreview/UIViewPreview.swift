@@ -1,6 +1,9 @@
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 import UIKit
 
+@available(iOS 13, *)
 public struct UIViewPreview<ContentView: UIView>: UIViewRepresentable {
   let contextBuilder: () -> ViewCoordinator<ContentView>
 
