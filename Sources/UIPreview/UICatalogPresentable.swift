@@ -25,7 +25,9 @@ extension UICatalogPresentable where Self: UIView {
   public static func preview(with model: PreviewModel) -> some View {
     makePreviewInstance().preview(with: model)
   }
-
-  public static func makePreviewInstance() -> Self { self.init() }
 }
 
+
+extension UICatalogPresentable where Self: UIView {
+  public static func makePreviewInstance() -> Self { self.init() }
+}
