@@ -1,6 +1,16 @@
 import SwiftUI
 import UIKit
 
+
+@available(iOS 13, *)
+extension UIView {
+  public func asPreview() -> some View {
+    UIViewPreview(self)
+  }
+}
+
+
+@available(iOS 13, *)
 public struct UIViewPreview<ContentView: UIView>: UIViewRepresentable {
   let contextBuilder: () -> ViewCoordinator<ContentView>
 
