@@ -1,4 +1,6 @@
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 
 @available(iOS 13, *)
 extension ForEach where Data.Element: Hashable, ID == Data.Element, Content: View {

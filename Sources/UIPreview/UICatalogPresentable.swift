@@ -1,4 +1,6 @@
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 import UIKit
 
 public protocol UICatalogPresentable {

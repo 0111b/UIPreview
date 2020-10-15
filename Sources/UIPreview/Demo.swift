@@ -1,34 +1,30 @@
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
+import UIKit
 
-@available(iOS 13, *)
-struct ContentView: View {
-  var body: some View {
-    Text("Hello, world!")
-      .background(Color(.red)).padding()
+extension UISwitch: UICatalogPresentable {
+  public static var previewModels = [true, false]
+
+  public func apply(previewModel: Bool) {
+    isOn = previewModel
   }
 }
 
-@available(iOS 13, *)
-struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
-    ContentView()
-      .previewDarkTheme()
+extension UILabel: UICatalogPresentable {
+  public static var previewModels: [String] {
+    ["123", "345", "Hello world", "How do you do"]
+  }
+
+  public func apply(previewModel: String) {
+    text = previewModel
+  }
+
+  public static func makePreviewInstance() -> Self {
+    let label = UILabel()
+    label.adjustsFontForContentSizeCategory = true
+    label.font = UIFont.preferredFont(forTextStyle: .caption1)
+    return label as! Self
   }
 }
 
-@available(iOS 13, *)
-struct Demo_Previews: PreviewProvider {
-  static var previews: some View {
-    Group {
-      UIViewPreview(UIView())
-        .frame(width: 100, height: 30)
-        .background(Color(.red))
-        .previewLayout(.sizeThatFits)
-      UIViewPreview(UILabel(), update: {
-        $0.text = "Hello"
-        $0.font = UIFont.preferredFont(forTextStyle: .caption1)
-        $0.adjustsFontForContentSizeCategory = true
-      }).previewAsComponent()
-    }
-  }
-}
