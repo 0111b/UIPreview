@@ -38,10 +38,10 @@ struct CatalogPage<Content: UIViewCatalogPresentable>: View {
   }
 }
 
-@available(iOS 13, *)
-struct CatalogPage_Previews: PreviewProvider {
-  static var previews: some View {
-    CatalogPage<UISwitch>(schemes: [.light, .dark, ])
-    CatalogPage<UILabel>(schemes: [.light, .dark, ])
-  }
-}
+//@available(iOS 13, *)
+//struct CatalogPage_Previews: PreviewProvider {
+//  static var previews: some View {
+//    CatalogPage<UISwitch>(schemes: [.light, .dark, ])
+//    CatalogPage<UILabel>(schemes: [.light, .dark, ])
+//  }
+//}
