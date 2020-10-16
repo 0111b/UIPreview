@@ -29,6 +29,21 @@ public extension UICatalog.PreviewDescriptor {
                 title: String? = nil) where Content: UIViewCatalogPresentable {
     id = "\(content)"
     self.title = title ?? "\(content)"
-    self.builder = { AnyView(CatalogItem<Content>(configuration: configuration)) }
+    builder = { AnyView(CatalogItem<Content>(configuration: configuration)) }
+  }
+
+  init(_ content: UICatalog.PreviewDescriptor...,
+       configuration: UICatalog.PreviewConfiguration = .init(),
+       title: String? = nil) {
+    self.init(content, configuration: configuration, title: title)
+  }
+
+  init(_ content: [UICatalog.PreviewDescriptor],
+       configuration: UICatalog.PreviewConfiguration = .init(),
+       title: String? = nil) {
+    id = content.map(\.id).joined()
+    self.title = title ?? content.map(\.title).joined(separator: " ")
+    let items: [GroupItem.Element] = content.map {  ($0.title, $0.builder) }
+    builder = { AnyView(GroupItem(items: items)) }
   }
 }
