@@ -4,7 +4,7 @@ import SwiftUI
 import UIKit
 
 extension UICatalog {
-
+  @available(iOS 13, *)
   public struct PreviewDescriptor: Identifiable, Hashable {
     let builder: () -> AnyView
     public let id: String
@@ -22,6 +22,7 @@ extension UICatalog {
 
 }
 
+@available(iOS 13, *)
 public extension UICatalog.PreviewDescriptor {
   init<Content>(_ content: Content.Type,
                 configuration: UICatalog.PreviewConfiguration = .init(),

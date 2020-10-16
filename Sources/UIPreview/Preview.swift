@@ -4,6 +4,7 @@ import SwiftUI
 import UIKit
 
 extension UICatalog {
+  @available(iOS 13, *)
   public struct Preview {
     init(_ view: AnyView, title: String) {
       self.title = title
