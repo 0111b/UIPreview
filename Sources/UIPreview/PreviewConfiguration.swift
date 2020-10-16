@@ -26,3 +26,8 @@ extension UICatalog.Theme {
     }
   }
 }
+
+@available(iOS 13, *)
+extension UICatalog.PreviewConfiguration {
+  var colorSchemes: [ColorScheme] { themes.map(\.scheme) }
+}

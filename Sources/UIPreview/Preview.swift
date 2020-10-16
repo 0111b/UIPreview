@@ -10,11 +10,14 @@ extension UICatalog {
       self.view = view
     }
 
-    public func asViewController() -> UIViewController {
+    func preview() -> some View {
       ScrollView(.vertical, showsIndicators: true) {
         view
       }.navigationBarTitle(title)
-      .asViewController()
+    }
+
+    public func asViewController() -> UIViewController {
+      preview().asViewController()
     }
 
     let title: String

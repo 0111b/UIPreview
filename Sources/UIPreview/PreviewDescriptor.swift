@@ -6,10 +6,10 @@ import UIKit
 extension UICatalog {
 
   public struct PreviewDescriptor: Identifiable, Hashable {
-    let view: AnyView
+    let builder: () -> AnyView
     public let id: String
     public let title: String
-    public var preview: Preview { Preview(view, title: title) }
+    public var preview: Preview { Preview(builder(), title: title) }
 
     public func hash(into hasher: inout Hasher) {
       hasher.combine(id)
@@ -19,7 +19,7 @@ extension UICatalog {
       lhs.id == rhs.id
     }
   }
-  
+
 }
 
 public extension UICatalog.PreviewDescriptor {
@@ -28,8 +28,6 @@ public extension UICatalog.PreviewDescriptor {
                 title: String? = nil) where Content: UIViewCatalogPresentable {
     id = "\(content)"
     self.title = title ?? "\(content)"
-    //    self.view = CatalogPage<Content>(schemes: themes.map(\.scheme))
-
-    self.view = AnyView(Text("sdf"))
+    self.builder = { AnyView(CatalogItem<Content>(configuration: configuration)) }
   }
 }

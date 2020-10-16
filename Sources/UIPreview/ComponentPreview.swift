@@ -26,7 +26,8 @@ struct ComponentPreview<Component: View>: View {
     ForEach(values: ColorScheme.allCases) { scheme in
       ForEach(values: ContentSizeCategory.smallestAndLargest) { category in
         self.component
-          .previewLayout(.sizeThatFits).padding()
+          .previewLayout(.sizeThatFits)
+          .padding()
           .background(Color(.systemBackground))
           .colorScheme(scheme)
           .environment(\.sizeCategory, category)
