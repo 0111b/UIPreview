@@ -4,25 +4,58 @@ import SwiftUI
 
 @available(iOS 13, *)
 struct GroupItem: View {
-  typealias Element = (title: String, builder: () -> AnyView)
+  struct Model: Identifiable {
+    let id = UUID().uuidString
+    var isExpanded = false
+    let title: String
+    let content: () -> AnyView
+  }
 
-  let items: [Element]
+  let items: [Model]
 
   var body: some View {
-    VStack {
-      ForEach(items, id: \.title) { item in
-        Group {
-          Text(item.title)
-            .font(.headline)
-            .fontWeight(.bold)
-          Divider()
-          item.builder()
-            .frame(maxWidth: .infinity)
-        }
-      }.padding(.bottom, 10)
+    ForEach(items) { item in
+      GroupItemRow(model: item).buttonStyle(PlainButtonStyle())
     }
   }
 }
+
+
+@available(iOS 13, *)
+struct GroupItemRow: View {
+
+  @State var model: GroupItem.Model
+
+  var body: some View {
+    VStack {
+      Button(action: {
+        model.isExpanded.toggle()
+      }, label: {
+        HStack {
+          Text(model.title)
+            .font(.headline)
+            .fontWeight(.bold)
+          if model.isExpanded {
+            Image(systemName: "chevron.up")
+          } else {
+            Image(systemName: "chevron.down")
+          }
+        }
+        .offset(x: 10)
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(Color.secondary)
+        .cornerRadius(8)
+      })
+      if model.isExpanded {
+        model.content()
+          .frame(maxWidth: .infinity)
+          .padding([.top, .bottom], /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+      }
+    }
+  }
+}
+
 
 #if DEBUG
 @available(iOS 13, *)
@@ -30,8 +63,10 @@ struct GroupItem_Previews: PreviewProvider {
   static var previews: some View {
     ScrollView {
       GroupItem(items: [
-        ("Group 1", { AnyView(Text("Preview")) } ),
-        ("Group 2", { AnyView(Image(systemName: "square.and.pencil")) } )
+        .init(title: "Group 1",
+              content: { AnyView(Text("Preview")) } ),
+        .init(title: "Group 2",
+              content: { AnyView(Image(systemName: "square.and.pencil")) } )
       ])
     }
   }

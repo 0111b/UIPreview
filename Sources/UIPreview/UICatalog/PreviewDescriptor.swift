@@ -43,7 +43,7 @@ public extension UICatalog.PreviewDescriptor {
        title: String? = nil) {
     id = content.map(\.id).joined()
     self.title = title ?? content.map(\.title).joined(separator: " ")
-    let items: [GroupItem.Element] = content.map {  ($0.title, $0.builder) }
+    let items = content.map { GroupItem.Model(title: $0.title, content: $0.builder) }
     builder = { AnyView(GroupItem(items: items)) }
   }
 }
