@@ -19,7 +19,7 @@ public typealias UIViewCatalogPresentable = UIView & UICatalogPresentable
 @available(iOS 13, *)
 extension UICatalogPresentable where Self: UIView {
   public func preview(with model: PreviewModel) -> some View {
-    UIViewPreview(self) { $0.apply(previewModel: model) }
+    UIViewWrapper(self) { $0.apply(previewModel: model) }
   }
 
   public static func preview(with model: PreviewModel) -> some View {

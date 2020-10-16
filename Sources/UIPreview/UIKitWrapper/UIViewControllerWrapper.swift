@@ -4,7 +4,7 @@ import SwiftUI
 import UIKit
 
 @available(iOS 13, *)
-public struct UIViewControllerPreview<ContentView: UIViewController>: UIViewControllerRepresentable {
+public struct UIViewControllerWrapper<ContentView: UIViewController>: UIViewControllerRepresentable {
   let contextBuilder: () -> ViewCoordinator<ContentView>
 
   public init(_ builder: @autoclosure @escaping () -> ContentView,
