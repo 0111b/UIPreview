@@ -22,7 +22,7 @@ extension UICatalog {
 
 }
 
-@available(iOS 13, *)
+@available(iOS 14, *)
 public extension UICatalog.PreviewDescriptor {
   init<Content>(_ content: Content.Type,
                 configuration: UICatalog.PreviewConfiguration = .init(),
