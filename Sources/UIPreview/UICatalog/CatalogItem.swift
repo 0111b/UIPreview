@@ -23,9 +23,11 @@ struct CatalogItem<Content: UIViewCatalogPresentable>: View {
 
     VStack(alignment: .center, spacing: 0) {
       Label(String(describing: model), systemImage: scheme.systemImageName)
+        .padding()
 
       Content.preview(with: model)
         .frame(maxWidth: .infinity)
+        .padding()
         .background(Color(.systemBackground))
         .colorScheme(scheme)
     }
