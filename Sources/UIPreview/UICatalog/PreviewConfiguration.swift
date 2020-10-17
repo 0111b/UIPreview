@@ -5,11 +5,14 @@ import UIKit
 
 extension UICatalog {
   public struct PreviewConfiguration {
-    public init(themes: [Theme] = Theme.allCases) {
+    public init(themes: [Theme] = Theme.allCases,
+                contentSize: [UIContentSizeCategory] = [.unspecified]) {
       self.themes = themes
+      self.contentSize = contentSize
     }
 
     let themes: [Theme]
+    let contentSize: [UIContentSizeCategory]
   }
 
   public enum Theme: CaseIterable {
@@ -27,7 +30,11 @@ extension UICatalog.Theme {
   }
 }
 
-@available(iOS 13, *)
+@available(iOS 14, *)
 extension UICatalog.PreviewConfiguration {
   var colorSchemes: [ColorScheme] { themes.map(\.scheme) }
+  var contentSizeCategory: [ContentSizeCategory] {
+    let categories = contentSize.compactMap { ContentSizeCategory($0) }
+    return categories.isEmpty ? [.medium] : categories
+  }
 }

@@ -4,7 +4,7 @@ import SwiftUI
 import UIKit
 
 extension UICatalog {
-  @available(iOS 13, *)
+  @available(iOS 14, *)
   public struct Preview {
     init(_ view: AnyView, title: String) {
       self.title = title
@@ -13,6 +13,7 @@ extension UICatalog {
 
     func preview() -> some View {
       ScrollView(.vertical, showsIndicators: true) {
+        PreviewLegend()
         view
       }.navigationBarTitle(title)
     }

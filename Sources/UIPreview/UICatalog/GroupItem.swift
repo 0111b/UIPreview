@@ -39,7 +39,8 @@ struct GroupItemRow: View {
       .frame(maxWidth: .infinity)
       .padding()
       .background(Color(.systemGroupedBackground))
-      .border(Color.secondary)
+      .cornerRadius(6)
+      .padding()
 
     }
     if model.isExpanded {
@@ -56,6 +57,7 @@ struct GroupItemRow: View {
 struct GroupItem_Previews: PreviewProvider {
   static var previews: some View {
     ScrollView {
+      PreviewLegend()
       GroupItem(items: [
         .init(title: "Group 1",
               content: { AnyView(Text("Preview")) } ),
