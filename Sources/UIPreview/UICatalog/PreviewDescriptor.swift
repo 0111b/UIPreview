@@ -7,7 +7,7 @@ extension UICatalog {
   @available(iOS 14, *)
   public struct PreviewDescriptor: Identifiable, Hashable {
     let builder: () -> AnyView
-    public let id: String
+    public let id: String // swiftlint:disable:this identifier_name
     public let title: String
     public var preview: Preview { Preview(builder(), title: title) }
 

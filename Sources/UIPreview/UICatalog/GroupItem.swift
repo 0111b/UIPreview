@@ -5,7 +5,7 @@ import SwiftUI
 @available(iOS 14, *)
 struct GroupItem: View {
   struct Model: Identifiable {
-    let id = UUID().uuidString
+    let id = UUID().uuidString // swiftlint:disable:this identifier_name
     var isExpanded = false
     let title: String
     let content: () -> AnyView
@@ -19,7 +19,6 @@ struct GroupItem: View {
     }
   }
 }
-
 
 @available(iOS 14, *)
 struct GroupItemRow: View {
@@ -51,7 +50,6 @@ struct GroupItemRow: View {
   }
 }
 
-
 #if DEBUG
 @available(iOS 14, *)
 struct GroupItem_Previews: PreviewProvider {
@@ -60,9 +58,9 @@ struct GroupItem_Previews: PreviewProvider {
       PreviewLegend()
       GroupItem(items: [
         .init(title: "Group 1",
-              content: { AnyView(Text("Preview")) } ),
+              content: { AnyView(Text("Preview")) }),
         .init(title: "Group 2",
-              content: { AnyView(Image(systemName: "square.and.pencil")) } )
+              content: { AnyView(Image(systemName: "square.and.pencil")) })
       ])
     }
   }

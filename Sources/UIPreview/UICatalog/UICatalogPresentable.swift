@@ -15,7 +15,6 @@ public protocol UICatalogPresentable {
 
 public typealias UIViewCatalogPresentable = UIView & UICatalogPresentable
 
-
 @available(iOS 13, *)
 extension UICatalogPresentable where Self: UIView {
   public func preview(with model: PreviewModel) -> some View {
@@ -26,7 +25,6 @@ extension UICatalogPresentable where Self: UIView {
     makePreviewInstance().preview(with: model)
   }
 }
-
 
 extension UICatalogPresentable where Self: UIView {
   public static func makePreviewInstance() -> Self { self.init() }
