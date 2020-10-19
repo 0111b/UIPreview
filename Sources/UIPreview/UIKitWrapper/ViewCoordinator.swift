@@ -1,3 +1,4 @@
+/// Coordinates `UIView` and `UIViewController` updates
 public final class ViewCoordinator<ContentView> {
   typealias Builder = () -> ContentView
   typealias Updater = (ContentView) -> Void

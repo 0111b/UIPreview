@@ -4,11 +4,15 @@ import SwiftUI
 import UIKit
 
 extension UICatalog {
+  /// Describes the preview that will be generated
   @available(iOS 14, *)
   public struct PreviewDescriptor: Identifiable, Hashable {
     let builder: () -> AnyView
+    /// Unique identifier
     public let id: String // swiftlint:disable:this identifier_name
+    /// Preview title
     public let title: String
+    /// Returns generated preview
     public var preview: Preview { Preview(builder(), title: title) }
 
     public func hash(into hasher: inout Hasher) {
@@ -24,6 +28,11 @@ extension UICatalog {
 
 @available(iOS 14, *)
 public extension UICatalog.PreviewDescriptor {
+  /// Creates the instance from suitable `UIView` subtype
+  /// - Parameters:
+  ///   - content: reference to the type that can be converted to the preview
+  ///   - configuration: preview configuration
+  ///   - title: preview title
   init<Content>(_ content: Content.Type,
                 configuration: UICatalog.PreviewConfiguration = .init(),
                 title: String? = nil) where Content: UIViewCatalogPresentable {
@@ -32,11 +41,19 @@ public extension UICatalog.PreviewDescriptor {
     builder = { AnyView(CatalogItem<Content>(configuration: configuration)) }
   }
 
+  /// Group multiple previews together
+  /// - Parameters:
+  ///   - content: list of the previews
+  ///   - title: preview title
   init(_ content: UICatalog.PreviewDescriptor...,
        title: String? = nil) {
     self.init(content, title: title)
   }
 
+  /// Group multiple previews together
+  /// - Parameters:
+  ///   - content: list of the previews
+  ///   - title: preview title
   init(_ content: [UICatalog.PreviewDescriptor],
        title: String? = nil) {
     id = content.map(\.id).joined()

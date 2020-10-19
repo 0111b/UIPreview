@@ -3,15 +3,22 @@ import SwiftUI
 #endif
 import UIKit
 
+/// Item that can be presented in the UICatalog
 public protocol UICatalogPresentable {
   associatedtype PreviewModel: Hashable
 
+  /// Applies data to the instance
+  /// - Parameter previewModel: data used in the preview
   func apply(previewModel: PreviewModel)
 
+  /// List of different data configurations used in the preview
   static var previewModels: [PreviewModel] { get }
 
+  /// Generates new instance for the preview
   static func makePreviewInstance() -> Self
 
+  /// Applies preview data 
+  /// - Parameter model: preview data
   @available(iOS 13, *)
   func preview(with model: PreviewModel) -> AnyView
 }
