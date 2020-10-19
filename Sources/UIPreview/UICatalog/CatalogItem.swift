@@ -3,10 +3,8 @@ import SwiftUI
 #endif
 import UIKit
 
-// TODO: remove UIView dependency
-
 @available(iOS 14, *)
-struct CatalogItem<Content: UIViewCatalogPresentable>: View {
+struct CatalogItem<Content: UICatalogPresentable>: View {
   let configuration: UICatalog.PreviewConfiguration
 
   var body: some View {
