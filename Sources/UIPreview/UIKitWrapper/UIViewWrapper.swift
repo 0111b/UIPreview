@@ -7,7 +7,7 @@ import UIKit
 @available(iOS 13, *)
 public struct UIViewWrapper<ContentView: UIView>: UIViewRepresentable {
   let contextBuilder: () -> ViewCoordinator<ContentView>
-  
+
   /// Make new instance with given parameters
   /// - Parameters:
   ///   - builder: describes how to build content
