@@ -13,7 +13,10 @@ struct CatalogItem<Content: UIViewCatalogPresentable>: View {
     ForEach(values: Content.previewModels) { model in
       ForEach(values: configuration.colorSchemes) { scheme in
         ForEach(values: configuration.contentSizeCategory) { category in
-          item(model: model, scheme: scheme, category: category)
+          item(model: model,
+               scheme: scheme,
+               category: category,
+               size: configuration.size)
         }
       }
     }
@@ -21,18 +24,21 @@ struct CatalogItem<Content: UIViewCatalogPresentable>: View {
 
   func item(model: Content.PreviewModel,
             scheme: ColorScheme,
-            category: ContentSizeCategory) -> some View {
+            category: ContentSizeCategory,
+            size: CGSize?) -> some View {
 
     VStack(alignment: .center, spacing: 0) {
       HStack {
         Image(systemName: scheme.systemImageName)
         Image(systemName: category.systemImageName)
         Text(String(describing: model))
-          .frame(maxWidth: 300)
+          .lineLimit(4)
+          .frame(maxWidth: 300, alignment: .leading)
       }
       .padding()
 
       Content.preview(with: model)
+        .modifier(SizeModifier(size: size))
         .frame(maxWidth: .infinity)
         .padding()
         .background(Color(.systemBackground))
@@ -42,6 +48,19 @@ struct CatalogItem<Content: UIViewCatalogPresentable>: View {
     .background(Color(.systemGroupedBackground))
     .cornerRadius(6)
     .padding()
+  }
+}
+
+@available(iOS 13, *)
+private struct SizeModifier: ViewModifier {
+  let size: CGSize?
+
+  func body(content: Content) -> some View {
+    guard let size = size else {
+      return AnyView(content)
+    }
+    return AnyView(content.frame(width: size.width,
+                                 height: size.height))
   }
 }
 
