@@ -3,6 +3,8 @@ import SwiftUI
 #endif
 
 //xcrun simctl list devicetypes
+
+/// Default devices used in `View.previewAsScreen(deviceNames:)`
 public let defaultDeviceNames: [String] =
   [
     "iPhone 8",

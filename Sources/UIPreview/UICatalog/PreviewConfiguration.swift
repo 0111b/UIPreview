@@ -4,7 +4,13 @@ import SwiftUI
 import UIKit
 
 extension UICatalog {
+  /// Configuration which will be used for preview generation
   public struct PreviewConfiguration {
+    /// Creates new instance
+    /// - Parameters:
+    ///   - themes: list of themes
+    ///   - contentSize: list of content sizes
+    ///   - size: required size
     public init(themes: [Theme] = Theme.allCases,
                 contentSize: [UIContentSizeCategory] = [.unspecified],
                 size: CGSize? = nil) {
@@ -17,11 +23,15 @@ extension UICatalog {
     let contentSize: [UIContentSizeCategory]
     let size: CGSize?
 
+    /// Adjusts the size of the generated preview
+    /// - Parameter newSize: required size
+    /// - Returns: updated configuration
     public func with(size newSize: CGSize) -> PreviewConfiguration {
       PreviewConfiguration(themes: themes, contentSize: contentSize, size: newSize)
     }
   }
 
+  /// Represents color scheme
   public enum Theme: CaseIterable {
     case light, dark
   }

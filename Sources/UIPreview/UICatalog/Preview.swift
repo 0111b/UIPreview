@@ -4,6 +4,7 @@ import SwiftUI
 import UIKit
 
 extension UICatalog {
+  ///  Generated preview instance
   @available(iOS 14, *)
   public struct Preview {
     init(_ view: AnyView, title: String) {
@@ -18,6 +19,8 @@ extension UICatalog {
       }.navigationBarTitle(title)
     }
 
+    /// Convert preview to the `UIViewController`
+    /// - Returns: generated UIViewController instance
     public func asViewController() -> UIViewController {
       preview().asViewController()
     }
