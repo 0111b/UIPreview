@@ -18,6 +18,14 @@ extension ColorScheme {
   var previewName: String {
     String(describing: self).capitalized
   }
+
+  var systemImageName: String {
+    switch self {
+    case .dark: return "sun.max.fill"
+    case .light: return "sun.max"
+    @unknown default: return "questionmark"
+    }
+  }
 }
 
 @available(iOS 13, *)

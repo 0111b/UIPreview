@@ -38,4 +38,3 @@ struct ComponentPreview<Component: View>: View {
     }
   }
 }
-

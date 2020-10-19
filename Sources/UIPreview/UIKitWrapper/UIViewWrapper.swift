@@ -8,7 +8,7 @@ public struct UIViewWrapper<ContentView: UIView>: UIViewRepresentable {
   let contextBuilder: () -> ViewCoordinator<ContentView>
 
   public init(_ builder: @autoclosure @escaping () -> ContentView,
-       update: @escaping (ContentView) -> Void = { _ in }) {
+              update: @escaping (ContentView) -> Void = { _ in }) {
     contextBuilder = {
       ViewCoordinator(build: builder, update: update)
     }

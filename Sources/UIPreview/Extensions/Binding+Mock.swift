@@ -9,4 +9,3 @@ extension Binding {
     return Binding(get: { value }, set: { value = $0 })
   }
 }
-

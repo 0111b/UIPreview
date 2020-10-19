@@ -2,10 +2,10 @@
 import SwiftUI
 #endif
 
-@available(iOS 13, *)
+@available(iOS 14, *)
 struct GroupItem: View {
   struct Model: Identifiable {
-    let id = UUID().uuidString
+    let id = UUID().uuidString // swiftlint:disable:this identifier_name
     var isExpanded = false
     let title: String
     let content: () -> AnyView
@@ -20,8 +20,7 @@ struct GroupItem: View {
   }
 }
 
-
-@available(iOS 13, *)
+@available(iOS 14, *)
 struct GroupItemRow: View {
 
   @State var model: GroupItem.Model
@@ -31,42 +30,37 @@ struct GroupItemRow: View {
       Button(action: {
         model.isExpanded.toggle()
       }, label: {
-        HStack {
-          Text(model.title)
-            .font(.headline)
-            .fontWeight(.bold)
-          if model.isExpanded {
-            Image(systemName: "chevron.up")
-          } else {
-            Image(systemName: "chevron.down")
-          }
-        }
-        .offset(x: 10)
-        .frame(maxWidth: .infinity)
-        .padding()
-        .background(Color.secondary)
-        .cornerRadius(8)
+        Label(model.title,
+              systemImage: model.isExpanded
+                ? "chevron.up"
+                : "chevron.down")
       })
-      if model.isExpanded {
-        model.content()
-          .frame(maxWidth: .infinity)
-          .padding([.top, .bottom], /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-      }
+      .frame(maxWidth: .infinity)
+      .padding()
+      .background(Color(.systemGroupedBackground))
+      .cornerRadius(6)
+      .padding()
+
+    }
+    if model.isExpanded {
+      model.content()
+        .frame(maxWidth: .infinity)
+        .padding([.top, .bottom], 10)
     }
   }
 }
 
-
 #if DEBUG
-@available(iOS 13, *)
+@available(iOS 14, *)
 struct GroupItem_Previews: PreviewProvider {
   static var previews: some View {
     ScrollView {
+      PreviewLegend()
       GroupItem(items: [
         .init(title: "Group 1",
-              content: { AnyView(Text("Preview")) } ),
+              content: { AnyView(Text("Preview")) }),
         .init(title: "Group 2",
-              content: { AnyView(Image(systemName: "square.and.pencil")) } )
+              content: { AnyView(Image(systemName: "square.and.pencil")) })
       ])
     }
   }
