@@ -28,6 +28,7 @@ struct CatalogItem<Content: UIViewCatalogPresentable>: View {
         Image(systemName: scheme.systemImageName)
         Image(systemName: category.systemImageName)
         Text(String(describing: model))
+          .frame(maxWidth: 300)
       }
       .padding()
 
