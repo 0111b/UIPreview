@@ -1,9 +1,10 @@
 #if canImport(SwiftUI)
 import SwiftUI
 #endif
+#if canImport(UIKit)
 import UIKit
 
-@available(iOS 13, *)
+@available(iOS 13, macOS 10.15, *)
 public struct UIViewWrapper<ContentView: UIView>: UIViewRepresentable {
   let contextBuilder: () -> ViewCoordinator<ContentView>
 
@@ -28,3 +29,4 @@ public struct UIViewWrapper<ContentView: UIView>: UIViewRepresentable {
     contextBuilder()
   }
 }
+#endif

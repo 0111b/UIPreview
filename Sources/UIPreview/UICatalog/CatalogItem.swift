@@ -1,9 +1,8 @@
 #if canImport(SwiftUI)
 import SwiftUI
 #endif
-import UIKit
 
-@available(iOS 14, *)
+@available(iOS 14, macOS 10.15, *)
 struct CatalogItem<Content: UICatalogPresentable>: View {
   let configuration: UICatalog.PreviewConfiguration
 
@@ -49,7 +48,7 @@ struct CatalogItem<Content: UICatalogPresentable>: View {
   }
 }
 
-@available(iOS 13, *)
+@available(iOS 13, macOS 10.15, *)
 private struct SizeModifier: ViewModifier {
   let size: CGSize?
 
@@ -62,8 +61,9 @@ private struct SizeModifier: ViewModifier {
   }
 }
 
+#if canImport(UIKit)
 #if DEBUG
-@available(iOS 14, *)
+@available(iOS 14, macOS 10.15, *)
 struct CatalogItem_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {
@@ -74,7 +74,7 @@ struct CatalogItem_Previews: PreviewProvider {
     }
   }
 }
-
+import UIKit
 private final class TestView: UILabel, UICatalogPresentable {
   static var previewModels = [
     "Hello world",
@@ -89,4 +89,5 @@ private final class TestView: UILabel, UICatalogPresentable {
     numberOfLines = 0
   }
 }
+#endif
 #endif

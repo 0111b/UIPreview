@@ -2,7 +2,7 @@
 import SwiftUI
 #endif
 
-@available(iOS 14, *)
+@available(iOS 14, macOS 10.15, *)
 struct GroupItem: View {
   struct Model: Identifiable {
     let id = UUID().uuidString // swiftlint:disable:this identifier_name
@@ -20,7 +20,7 @@ struct GroupItem: View {
   }
 }
 
-@available(iOS 14, *)
+@available(iOS 14, macOS 10.15, *)
 struct GroupItemRow: View {
 
   @State var model: GroupItem.Model
@@ -51,7 +51,7 @@ struct GroupItemRow: View {
 }
 
 #if DEBUG
-@available(iOS 14, *)
+@available(iOS 14, macOS 10.15, *)
 struct GroupItem_Previews: PreviewProvider {
   static var previews: some View {
     ScrollView {

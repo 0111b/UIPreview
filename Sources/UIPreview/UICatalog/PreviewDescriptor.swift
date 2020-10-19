@@ -1,10 +1,9 @@
 #if canImport(SwiftUI)
 import SwiftUI
 #endif
-import UIKit
 
 extension UICatalog {
-  @available(iOS 14, *)
+  @available(iOS 14, macOS 10.15, *)
   public struct PreviewDescriptor: Identifiable, Hashable {
     let builder: () -> AnyView
     public let id: String // swiftlint:disable:this identifier_name
@@ -22,7 +21,9 @@ extension UICatalog {
 
 }
 
-@available(iOS 14, *)
+#if canImport(UIKit)
+import UIKit
+@available(iOS 14, macOS 10.15, *)
 public extension UICatalog.PreviewDescriptor {
   init<Content>(_ content: Content.Type,
                 configuration: UICatalog.PreviewConfiguration = .init(),
@@ -45,3 +46,4 @@ public extension UICatalog.PreviewDescriptor {
     builder = { AnyView(GroupItem(items: items)) }
   }
 }
+#endif

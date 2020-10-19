@@ -2,7 +2,7 @@
 import SwiftUI
 #endif
 
-@available(iOS 14, *)
+@available(iOS 14, macOS 10.15, *)
 struct PreviewLegend: View {
   @State var isExpanded: Bool = false
 
@@ -29,7 +29,7 @@ struct PreviewLegend: View {
   }
 }
 
-@available(iOS 14, *)
+@available(iOS 14, macOS 10.15, *)
 private struct PreviewLegendBody: View {
   var body: some View {
     VStack(alignment: .leading) {
@@ -59,7 +59,7 @@ private struct PreviewLegendBody: View {
   }
 }
 
-@available(iOS 14, *)
+@available(iOS 14, macOS 10.15, *)
 struct PreviewLegend_Previews: PreviewProvider {
   static var previews: some View {
     PreviewLegend()
@@ -76,7 +76,7 @@ private extension UICatalog.Theme {
   }
 }
 
-@available(iOS 13, *)
+@available(iOS 13, macOS 10.15, *)
 extension ContentSizeCategory {
   var systemImageName: String {
     switch self {

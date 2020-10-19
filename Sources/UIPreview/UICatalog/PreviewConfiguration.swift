@@ -1,7 +1,9 @@
 #if canImport(SwiftUI)
 import SwiftUI
 #endif
+#if canImport(UIKit)
 import UIKit
+#endif
 
 extension UICatalog {
   public struct PreviewConfiguration {
@@ -27,7 +29,7 @@ extension UICatalog {
   }
 }
 
-@available(iOS 13, *)
+@available(iOS 13, macOS 10.15, *)
 extension UICatalog.Theme {
   var scheme: ColorScheme {
     switch self {
@@ -37,7 +39,7 @@ extension UICatalog.Theme {
   }
 }
 
-@available(iOS 14, *)
+@available(iOS 14, macOS 10.15, *)
 extension UICatalog.PreviewConfiguration {
   var colorSchemes: [ColorScheme] { themes.map(\.scheme) }
   var contentSizeCategory: [ContentSizeCategory] {

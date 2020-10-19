@@ -2,7 +2,7 @@
 import SwiftUI
 #endif
 
-@available(iOS 13, *)
+@available(iOS 13, macOS 10.15, *)
 extension Binding {
   public static func mock(_ value: Value) -> Self {
     var value = value

@@ -1,10 +1,9 @@
 #if canImport(SwiftUI)
 import SwiftUI
 #endif
-import UIKit
 
 extension UICatalog {
-  @available(iOS 14, *)
+  @available(iOS 14, macOS 10.15, *)
   public struct Preview {
     init(_ view: AnyView, title: String) {
       self.title = title
@@ -18,11 +17,18 @@ extension UICatalog {
       }.navigationBarTitle(title)
     }
 
-    public func asViewController() -> UIViewController {
-      preview().asViewController()
-    }
-
     let title: String
     let view: AnyView
   }
 }
+
+#if canImport(UIKit)
+import UIKit
+@available(iOS 14, macOS 10.15, *)
+extension UICatalog.Preview {
+  public func asViewController() -> UIViewController {
+    preview().asViewController()
+  }
+
+}
+#endif
