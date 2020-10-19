@@ -39,6 +39,7 @@ struct CatalogItem<Content: UIViewCatalogPresentable>: View {
 
       Content.preview(with: model)
         .modifier(SizeModifier(size: size))
+        .frame(maxWidth: .infinity)
         .padding()
         .background(Color(.systemBackground))
         .colorScheme(scheme)
@@ -56,7 +57,7 @@ private struct SizeModifier: ViewModifier {
 
   func body(content: Content) -> some View {
     guard let size = size else {
-      return AnyView(content.frame(maxWidth: .infinity))
+      return AnyView(content)
     }
     return AnyView(content.frame(width: size.width,
                                  height: size.height))
