@@ -23,13 +23,13 @@ jobs:
   Xcode:
     strategy:
       matrix:
-        xcode_version: ['11.4']
+        xcode_version: ['12']
     runs-on: macos-latest
     env:
       DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode_version }}.app
     steps:
+#       - run: ls /Applications | grep Xcode
       - uses: actions/checkout@v2
       - run: swift -version
-      - run: ls /Applications | grep Xcode
       - run: swift package clean
       - run: swift test -v --enable-code-coverage
