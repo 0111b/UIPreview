@@ -30,6 +30,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: swift -version
-      - run: ls //Applications | grep Xcode
+      - run: ls /Applications | grep Xcode
       - run: swift package clean
       - run: swift test -v --enable-code-coverage
