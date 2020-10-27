@@ -5,32 +5,47 @@ import UIKit
 
 extension UICatalog {
   /// Configuration which will be used for preview generation
+  @available(iOS 13, *)
   public struct PreviewConfiguration {
-    /// Creates new instance
-    /// - Parameters:
-    ///   - themes: list of themes
-    ///   - contentSize: list of content sizes
-    ///   - size: required size
-    public init(themes: [Theme] = Theme.allCases,
-                contentSize: [UIContentSizeCategory] = [.unspecified],
-                size: CGSize? = nil) {
-      self.themes = themes
-      self.contentSize = contentSize
-      self.size = size
-    }
-
     let themes: [Theme]
     let contentSize: [UIContentSizeCategory]
     let size: CGSize?
+    let itemStyle: PreviewItemStyle
+  }
+}
 
-    /// Adjusts the size of the generated preview
-    /// - Parameter newSize: required size
-    /// - Returns: updated configuration
-    public func with(size newSize: CGSize) -> PreviewConfiguration {
-      PreviewConfiguration(themes: themes, contentSize: contentSize, size: newSize)
-    }
+@available(iOS 13, *)
+extension UICatalog.PreviewConfiguration {
+  /// Creates new instance
+  /// - Parameters:
+  ///   - themes: list of themes
+  ///   - contentSize: list of content sizes
+  ///   - size: required size
+  public init(themes: [UICatalog.Theme] = UICatalog.Theme.allCases,
+              contentSize: [UIContentSizeCategory] = [.unspecified],
+              size: CGSize? = nil) {
+    self.themes = themes
+    self.contentSize = contentSize
+    self.size = size
+    itemStyle = UICatalog.DefaultPreviewItemStyle()
   }
 
+  /// Adjusts the size of the generated preview
+  /// - Parameter newSize: required size
+  /// - Returns: updated configuration
+  public func with(size newSize: CGSize) -> UICatalog.PreviewConfiguration {
+    UICatalog.PreviewConfiguration(themes: themes, contentSize: contentSize, size: newSize)
+  }
+
+  public func with(itemStyle: PreviewItemStyle) -> UICatalog.PreviewConfiguration {
+    UICatalog.PreviewConfiguration(themes: self.themes,
+                                   contentSize: self.contentSize,
+                                   size: self.size,
+                                   itemStyle: self.itemStyle)
+  }
+}
+
+extension UICatalog {
   /// Represents color scheme
   public enum Theme: CaseIterable {
     case light, dark

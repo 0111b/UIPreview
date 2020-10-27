@@ -12,8 +12,9 @@ extension UICatalog {
     public let id: String // swiftlint:disable:this identifier_name
     /// Preview title
     public let title: String
+
     /// Returns generated preview
-    public var preview: Preview { Preview(builder(), title: title) }
+    public func preview() -> Preview { Preview(builder(), title: title) }
 
     public func hash(into hasher: inout Hasher) {
       hasher.combine(id)
@@ -38,7 +39,7 @@ public extension UICatalog.PreviewDescriptor {
                 title: String? = nil) where Content: UIViewCatalogPresentable {
     id = "\(content)"
     self.title = title ?? "\(content)"
-    builder = { AnyView(CatalogItem<Content>(configuration: configuration)) }
+    builder = { CatalogItem<Content>(configuration: configuration).eraseToAny() }
   }
 
   /// Group multiple previews together
@@ -59,6 +60,6 @@ public extension UICatalog.PreviewDescriptor {
     id = content.map(\.id).joined()
     self.title = title ?? content.map(\.title).joined(separator: " ")
     let items = content.map { GroupItem.Model(title: $0.title, content: $0.builder) }
-    builder = { AnyView(GroupItem(items: items)) }
+    builder = { GroupItem(items: items).eraseToAny() }
   }
 }
