@@ -25,7 +25,7 @@ public protocol UICatalogPresentable {
 
 @available(iOS 13, *)
 extension UICatalogPresentable {
-  public static func preview(with model: PreviewModel) -> some View {
+  public static func preview(with model: PreviewModel) -> AnyView {
     makePreviewInstance().preview(with: model)
   }
 }
