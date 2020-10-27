@@ -5,6 +5,7 @@ import UIKit
 
 extension UICatalog {
   /// Configuration which will be used for preview generation
+  @available(iOS 13, *)
   public struct PreviewConfiguration {
     let themes: [Theme]
     let contentSize: [UIContentSizeCategory]

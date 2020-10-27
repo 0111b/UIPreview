@@ -5,15 +5,16 @@ import UIKit
 
 extension UICatalog {
   /// Describes the preview that will be generated
-  @available(iOS 14, *)
   public struct PreviewDescriptor: Identifiable, Hashable {
     let builder: () -> AnyView
     /// Unique identifier
     public let id: String // swiftlint:disable:this identifier_name
     /// Preview title
     public let title: String
+
     /// Returns generated preview
-    public var preview: Preview { Preview(builder(), title: title) }
+    @available(iOS 14, *)
+    public func preview() -> Preview { Preview(builder(), title: title) }
 
     public func hash(into hasher: inout Hasher) {
       hasher.combine(id)
