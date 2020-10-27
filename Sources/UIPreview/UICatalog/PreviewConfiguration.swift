@@ -14,6 +14,7 @@ extension UICatalog {
   }
 }
 
+@available(iOS 13, *)
 extension UICatalog.PreviewConfiguration {
   /// Creates new instance
   /// - Parameters:
@@ -35,10 +36,7 @@ extension UICatalog.PreviewConfiguration {
   public func with(size newSize: CGSize) -> UICatalog.PreviewConfiguration {
     UICatalog.PreviewConfiguration(themes: themes, contentSize: contentSize, size: newSize)
   }
-}
 
-extension UICatalog.PreviewConfiguration {
-  @available(iOS 13, *)
   public func with(itemStyle: PreviewItemStyle) -> UICatalog.PreviewConfiguration {
     UICatalog.PreviewConfiguration(themes: self.themes,
                                    contentSize: self.contentSize,

@@ -5,6 +5,7 @@ import UIKit
 
 extension UICatalog {
   /// Describes the preview that will be generated
+  @available(iOS 14, *)
   public struct PreviewDescriptor: Identifiable, Hashable {
     let builder: () -> AnyView
     /// Unique identifier
@@ -13,7 +14,6 @@ extension UICatalog {
     public let title: String
 
     /// Returns generated preview
-    @available(iOS 14, *)
     public func preview() -> Preview { Preview(builder(), title: title) }
 
     public func hash(into hasher: inout Hasher) {
