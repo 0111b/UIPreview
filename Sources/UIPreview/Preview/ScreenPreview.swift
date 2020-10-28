@@ -16,6 +16,7 @@ public let defaultDeviceNames: [String] =
 
 @available(iOS 13, *)
 extension View {
+  /// Generate preview in the multiple themes and devices
   public func previewAsScreen(deviceNames: [String] = defaultDeviceNames) -> some View {
     ScreenPreview(screen: self, deviceNames: deviceNames)
   }

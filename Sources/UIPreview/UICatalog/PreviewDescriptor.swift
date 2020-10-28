@@ -36,10 +36,10 @@ public extension UICatalog.PreviewDescriptor {
   ///   - title: preview title
   init<Content>(_ content: Content.Type,
                 configuration: UICatalog.PreviewConfiguration = .init(),
-                title: String? = nil) where Content: UIViewCatalogPresentable {
+                title: String? = nil) where Content: UICatalogPresentable {
     id = "\(content)"
     self.title = title ?? "\(content)"
-    builder = { CatalogItem<Content>(configuration: configuration).eraseToAny() }
+    builder = { CatalogItemView<Content>(configuration: configuration).eraseToAny() }
   }
 
   /// Group multiple previews together
@@ -59,7 +59,7 @@ public extension UICatalog.PreviewDescriptor {
        title: String? = nil) {
     id = content.map(\.id).joined()
     self.title = title ?? content.map(\.title).joined(separator: " ")
-    let items = content.map { GroupItem.Model(title: $0.title, content: $0.builder) }
-    builder = { GroupItem(items: items).eraseToAny() }
+    let items = content.map { GroupItemView.Model(title: $0.title, content: $0.builder) }
+    builder = { GroupItemView(items: items).eraseToAny() }
   }
 }
