@@ -30,8 +30,6 @@ extension UICatalogPresentable {
   }
 }
 
-public typealias UIViewCatalogPresentable = UIView & UICatalogPresentable
-
 @available(iOS 13, *)
 extension UICatalogPresentable where Self: UIView {
   public func preview(with model: PreviewModel) -> AnyView {

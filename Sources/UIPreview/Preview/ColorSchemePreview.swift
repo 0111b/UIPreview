@@ -4,10 +4,12 @@ import SwiftUI
 
 @available(iOS 13, *)
 extension View {
+  /// Generate preview in the  `.light` theme
   public func previewLightTheme() -> some View {
     ColorSchemePreview(scheme: .light) { self }
   }
 
+  /// Generate preview in the  `.dark` theme
   public func previewDarkTheme() -> some View {
     ColorSchemePreview(scheme: .dark) { self }
   }

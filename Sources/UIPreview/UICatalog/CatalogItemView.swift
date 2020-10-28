@@ -4,7 +4,7 @@ import SwiftUI
 import UIKit
 
 @available(iOS 14, *)
-struct CatalogItem<Content: UICatalogPresentable>: View {
+struct CatalogItemView<Content: UICatalogPresentable>: View {
   let configuration: UICatalog.PreviewConfiguration
 
   var body: some View {
@@ -30,7 +30,7 @@ struct CatalogItem_Previews: PreviewProvider {
     NavigationView {
       ScrollView(.vertical) {
         PreviewLegend()
-        CatalogItem<TestView>(configuration: .init())
+        CatalogItemView<TestView>(configuration: .init())
       }.navigationBarTitle("TestView")
     }
   }

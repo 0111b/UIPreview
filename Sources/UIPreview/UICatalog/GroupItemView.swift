@@ -3,7 +3,7 @@ import SwiftUI
 #endif
 
 @available(iOS 14, *)
-struct GroupItem<Content>: View where Content: View {
+struct GroupItemView<Content>: View where Content: View {
   struct Model {
     let title: String
     let content: () -> Content
@@ -26,7 +26,7 @@ struct GroupItem_Previews: PreviewProvider {
   static var previews: some View {
     ScrollView {
       PreviewLegend()
-      GroupItem(items: [
+      GroupItemView(items: [
         .init(title: "Group 1",
               content: { AnyView(Text("Preview")) }),
         .init(title: "Group 2",
