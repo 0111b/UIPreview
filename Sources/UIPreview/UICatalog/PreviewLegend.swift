@@ -7,31 +7,12 @@ struct PreviewLegend: View {
   @State var isExpanded: Bool = false
 
   var body: some View {
-    VStack(alignment: .leading) {
-      Button(action: {
-        isExpanded.toggle()
-      }, label: {
-        Label("Legend",
-              systemImage: isExpanded
-                ? "chevron.up"
-                : "chevron.down")
-          .foregroundColor(.primary)
-      })
-      if isExpanded {
-        PreviewLegendBody()
-      }
+    ExpandGroup("Legend") {
+      previewContent
     }
-    .frame(maxWidth: .infinity)
-    .padding()
-    .background(Color(.systemGroupedBackground))
-    .cornerRadius(6)
-    .padding()
   }
-}
 
-@available(iOS 14, *)
-private struct PreviewLegendBody: View {
-  var body: some View {
+  var previewContent: some View {
     VStack(alignment: .leading) {
       Divider()
         .foregroundColor(.accentColor)
@@ -62,8 +43,9 @@ private struct PreviewLegendBody: View {
 @available(iOS 14, *)
 struct PreviewLegend_Previews: PreviewProvider {
   static var previews: some View {
-    PreviewLegend()
-      .previewLayout(.sizeThatFits)
+    ScrollView(.vertical, showsIndicators: true) {
+      PreviewLegend()
+    }
   }
 }
 

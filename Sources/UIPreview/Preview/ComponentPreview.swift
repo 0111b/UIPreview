@@ -4,6 +4,7 @@ import SwiftUI
 
 @available(iOS 13, *)
 extension View {
+  /// Generate preview in the multiple themes and size categories
   public func previewAsComponent() -> some View {
     ComponentPreview(component: self)
   }
