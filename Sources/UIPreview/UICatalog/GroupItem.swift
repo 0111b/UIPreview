@@ -3,49 +3,19 @@ import SwiftUI
 #endif
 
 @available(iOS 14, *)
-struct GroupItem: View {
-  struct Model: Identifiable {
-    let id = UUID().uuidString // swiftlint:disable:this identifier_name
-    var isExpanded = false
+struct GroupItem<Content>: View where Content: View {
+  struct Model {
     let title: String
-    let content: () -> AnyView
+    let content: () -> Content
   }
 
   let items: [Model]
 
   var body: some View {
-    ForEach(items) { item in
-      GroupItemRow(model: item).buttonStyle(PlainButtonStyle())
-    }
-  }
-}
-
-@available(iOS 14, *)
-struct GroupItemRow: View {
-
-  @State var model: GroupItem.Model
-
-  var body: some View {
-    VStack {
-      Button(action: {
-        model.isExpanded.toggle()
-      }, label: {
-        Label(model.title,
-              systemImage: model.isExpanded
-                ? "chevron.up"
-                : "chevron.down")
-      })
-      .frame(maxWidth: .infinity)
-      .padding()
-      .background(Color(.systemGroupedBackground))
-      .cornerRadius(6)
-      .padding()
-
-    }
-    if model.isExpanded {
-      model.content()
-        .frame(maxWidth: .infinity)
-        .padding([.top, .bottom], 10)
+    ForEach(items, id: \.title) { item in
+      ExpandGroup(item.title) {
+        item.content()
+      }
     }
   }
 }
