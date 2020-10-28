@@ -1,5 +1,6 @@
 import SwiftUI
 
+///  Single item style
 @available(iOS 13, *)
 public protocol PreviewItemStyle {
   /// Creates a view that represents single item of a preview.
@@ -13,6 +14,7 @@ public protocol PreviewItemStyle {
 }
 
 extension UICatalog {
+  /// Data passed to preview item rederer
   @available(iOS 13, *)
   public struct PreviewItemStyleConfiguration {
     public let modelInfo: String

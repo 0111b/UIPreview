@@ -37,6 +37,9 @@ extension UICatalog.PreviewConfiguration {
     UICatalog.PreviewConfiguration(themes: themes, contentSize: contentSize, size: newSize)
   }
 
+  /// Sets the style of a single preview item
+  /// - Parameter itemStyle: item style
+  /// - Returns: updated configuration
   public func with(itemStyle: PreviewItemStyle) -> UICatalog.PreviewConfiguration {
     UICatalog.PreviewConfiguration(themes: self.themes,
                                    contentSize: self.contentSize,
